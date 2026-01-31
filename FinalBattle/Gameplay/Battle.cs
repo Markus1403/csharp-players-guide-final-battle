@@ -15,8 +15,8 @@ public class Battle {
                 foreach(Character character in party.Character) {
                     Console.WriteLine();
                     Console.WriteLine($"{character.Name} is taking a turn...");
-                    Thread.Sleep(1000);
-                    character.Action();
+                    Thread.Sleep(700);
+                    party.Player.ChooseAction(this, character).Run(this, character);
                 }
             }
         }

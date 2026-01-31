@@ -9,10 +9,10 @@ public class Game {
 
     public Game() {
         Console.Clear();
-        this.heroes = new Party();
+        this.heroes = new Party(new ComputerPlayer());
         heroes.Character.Add(new TheTrueProgrammer());
 
-        this.monsters = new Party();
+        this.monsters = new Party(new ComputerPlayer());
         monsters.Character.Add(new Skeleton());
         battle = new Battle(heroes, monsters); 
     }
