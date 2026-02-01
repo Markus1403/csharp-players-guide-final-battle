@@ -5,7 +5,7 @@ public class TheTrueProgrammer : Character {
 
     public TheTrueProgrammer() {
         ConsoleColor previousColor = Console.ForegroundColor;
-        Console.ForegroundColor =  ConsoleColor.Gray;
+        Console.ForegroundColor = ConsoleColor.Gray;
         Console.Write("You are the True Programmer, what is your name: ");
         Console.ForegroundColor = previousColor;
 
@@ -16,5 +16,8 @@ public class TheTrueProgrammer : Character {
 
     public override string Name => name ?? string.Empty;
 
-    public override string StandardAttack => "PUNCH";
+    public override int InitialHealth => 25;
+
+    public override IAttack StandardAttack { get; } = new Punch();
+
 }

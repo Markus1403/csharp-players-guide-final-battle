@@ -14,11 +14,10 @@ public class Game {
 
         this.monsters = new Party(new ComputerPlayer());
         monsters.Characters.Add(new Skeleton());
-        battle = new Battle(heroes, monsters); 
+        battle = new Battle(heroes, monsters);
     }
 
-    public void GameRunning () {
-        Console.Clear();
+    public void GameRunning() {
         battle.RunBattle();
     }
 }
