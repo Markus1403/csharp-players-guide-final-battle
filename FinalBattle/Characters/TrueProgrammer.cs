@@ -15,4 +15,6 @@ public class TheTrueProgrammer : Character {
     }
 
     public override string Name => name ?? string.Empty;
+
+    public override string StandardAttack => "PUNCH";
 }
