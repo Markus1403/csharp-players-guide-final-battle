@@ -1,7 +1,9 @@
 namespace FinalBattle;
 
 public interface IAttack {
-    string Name {get;}
+    string Name {
+        get;
+    }
 
-    int Damage {get;}
+    AttackData Create();
 }

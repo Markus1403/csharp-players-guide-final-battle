@@ -4,22 +4,23 @@ using System;
 
 public abstract class Character {
 
-    public abstract string Name {
-        get;
+    public abstract string Name { get; }
+    public abstract IAttack StandardAttack { get; }
+
+    private int Health;
+
+    public int HP {
+        get => Health;
+        set => Health = Math.Clamp(value, 0, MaxHP);
     }
 
-    public abstract int InitialHealth { get; }
-    public int CurrentHealth { get; private set; }
+    public int MaxHP { get; }
 
-    public abstract IAttack StandardAttack {
-        get;
-    }
+    public bool IsAlive => HP > 0;
 
-    protected Character() {
-        CurrentHealth = InitialHealth;
-    }
-
-    public void TakeDamage(int damage) {
-        CurrentHealth = Math.Max(0, CurrentHealth - damage);
+    public Character(int hp)
+    {
+        MaxHP = hp;
+        HP = hp;
     }
 }

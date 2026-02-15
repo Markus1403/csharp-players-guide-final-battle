@@ -3,7 +3,11 @@ using FinalBattle;
 public class TheTrueProgrammer : Character {
     private string? name;
 
-    public TheTrueProgrammer() {
+    public override string Name => name ?? "Unknown Programmer";
+
+    public override IAttack StandardAttack { get; } = new Punch();
+
+    public TheTrueProgrammer() : base(25) {
         ConsoleColor previousColor = Console.ForegroundColor;
         Console.ForegroundColor = ConsoleColor.Gray;
         Console.Write("You are the True Programmer, what is your name: ");
@@ -14,10 +18,7 @@ public class TheTrueProgrammer : Character {
         Console.ForegroundColor = previousColor;
     }
 
-    public override string Name => name ?? string.Empty;
-
-    public override int InitialHealth => 25;
-
-    public override IAttack StandardAttack { get; } = new Punch();
-
+    public TheTrueProgrammer(string name) : base(25) {
+        this.name = name;
+    }
 }

@@ -14,9 +14,19 @@ public class AttackAction : IAction {
     }
 
     public void Run(Battle battle, Character character) {
+
         Console.WriteLine($"{character.Name} used {attack.Name} on {target.Name}.");
-        target.TakeDamage(attack.Damage);
-        Console.WriteLine($"{attack.Name} dealt {attack.Damage} damage to {target.Name}");
-        Console.WriteLine($"{target.Name} is now at {target.CurrentHealth}/{target.InitialHealth} HP");
+
+        AttackData attackData = attack.Create();
+        target.HP -= attackData.Damage;
+
+        Console.WriteLine($"{attack.Name} dealt {attackData.Damage} damage to {target.Name}");
+
+        Console.WriteLine($"{target.Name} is now at {target.HP}/{target.MaxHP} HP");
+
+        if (!target.IsAlive) {
+            battle.GetPartyMember(target).Characters.Remove(target);
+            Console.WriteLine($"{target.Name} was defeated!");
+        }
     }
 }

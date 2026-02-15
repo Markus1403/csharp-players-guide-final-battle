@@ -8,5 +8,5 @@ public class BoneCrunch : IAttack {
 
     public string Name => "BONE CRUNCH";
 
-    public int Damage => random.Next(2);
+    public AttackData Create() => new AttackData(random.Next(2));
 }

@@ -1,6 +1,7 @@
 namespace FinalBattle;
 
 public class Battle {
+
     private Party heroes;
     private Party monsters;
 
@@ -11,27 +12,41 @@ public class Battle {
 
     public void RunBattle() {
         Console.Clear();
-        while (true) {
+        while (!IsPartyEmpty) {
             foreach (Party party in new[] { heroes, monsters }) {
                 foreach (Character character in party.Characters) {
                     Console.WriteLine();
                     Console.WriteLine($"{character.Name} is taking a turn...");
-                    Thread.Sleep(700);
                     party.Player.ChooseAction(this, character).Run(this, character);
+
+                    if (IsPartyEmpty) break;
                 }
+                if (IsPartyEmpty) break;
             }
         }
-    }
 
-    public Party GetPartyFor(Character character) {
-        if (heroes.Characters.Contains(character)) {
-            return monsters;
+        if (heroes.Characters.Count > 0) {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("You have defeated the Uncoded One's forces! You have won the battle!");
         } else {
-            return heroes;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("You have been defeated. The Uncoded One has won.");
         }
     }
 
-    public Party GetEnemyPartyFor(Character character) {
+    public bool IsPartyEmpty => heroes.Characters.Count == 0 || monsters.Characters.Count == 0;
+
+    public Party GetPartyMember(Character character) {
+        if (heroes.Characters.Contains(character)) {
+            return heroes;
+        } else {
+            return monsters;
+        }
+    }
+
+    public Party GetEnemyPartyMember(Character character) {
         if (heroes.Characters.Contains(character)) {
             return monsters;
         } else {

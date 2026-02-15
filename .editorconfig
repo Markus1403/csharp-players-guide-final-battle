@@ -26,16 +26,15 @@ dotnet_style_parentheses_in_other_binary_operators = never_if_unnecessary:warnin
 dotnet_style_parentheses_in_other_operators = never_if_unnecessary:warning
 dotnet_sort_system_directives_first = true:warning
 
-csharp_new_line_before_open_brace = true
-csharp_new_line_before_else = false
-csharp_new_line_before_catch = false
-csharp_new_line_before_finally = false
-csharp_preserve_single_line_statements = false
-csharp_preserve_single_line_blocks = false # I do not know if this hsould be kept.
+csharp_new_line_before_open_brace = false
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_preserve_single_line_statements = true
+csharp_preserve_single_line_blocks = true # I do not know if this hsould be kept.
 
 csharp_indent_switch_labels = true
 csharp_indent_case_contents = true
-csharp_indent_block_contents = true
 csharp_indent_block_contents = true
 csharp_indent_labels = one_less_than_current
 csharp_indent_braces = false
