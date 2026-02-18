@@ -1,9 +1,8 @@
 namespace FinalBattle;
 
-public interface IAttack {
-    string Name {
-        get;
-    }
+public interface IAttack
+{
+    string Name { get; }
 
     AttackData Create();
 }

@@ -1,5 +1,6 @@
 using FinalBattle;
 
-public interface IPlayer {
+public interface IPlayer
+{
     IAction ChooseAction(Battle battle, Character character);
 }

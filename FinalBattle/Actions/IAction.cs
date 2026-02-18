@@ -1,5 +1,6 @@
 namespace FinalBattle;
 
-public interface IAction {
+public interface IAction
+{
     void Run(Battle battle, Character character);
 }

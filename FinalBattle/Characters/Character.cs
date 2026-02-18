@@ -2,14 +2,15 @@ namespace FinalBattle;
 
 using System;
 
-public abstract class Character {
-
+public abstract class Character
+{
     public abstract string Name { get; }
     public abstract IAttack StandardAttack { get; }
 
     private int Health;
 
-    public int HP {
+    public int HP
+    {
         get => Health;
         set => Health = Math.Clamp(value, 0, MaxHP);
     }
