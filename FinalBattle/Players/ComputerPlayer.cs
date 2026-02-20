@@ -4,7 +4,7 @@ public class ComputerPlayer : IPlayer
 {
     public IAction ChooseAction(Battle battle, Character character)
     {
-        Thread.Sleep(700);
+        Thread.Sleep(1000);
 
         List<Character> targets = battle.GetEnemyPartyMember(character).Characters;
 

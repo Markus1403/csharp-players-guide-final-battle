@@ -3,24 +3,40 @@ namespace FinalBattle;
 public class Game
 {
     private Party heroes;
-    private Party monsters;
+    private List<Party> enemyParties;
 
-    private Battle battle;
+    private IPlayer friendlyPlayer = new ComputerPlayer();
+    private IPlayer enemyPlayer = new ComputerPlayer();
+
+    private EnemyFactory enemyFactory;
+    private HeroFactory heroFactory;
 
     public Game()
     {
         Console.Clear();
-        this.heroes = new Party(new ComputerPlayer());
-        heroes.Characters.Add(new TheTrueProgrammer());
 
-        this.monsters = new Party(new ComputerPlayer());
-        monsters.Characters.Add(new Skeleton());
+        heroFactory = new HeroFactory(friendlyPlayer);
+        enemyFactory = new EnemyFactory(enemyPlayer);
 
-        battle = new Battle(heroes, monsters);
+        heroes = heroFactory.CreateHeroParty();
+
+        enemyParties = new List<Party>
+        {
+            enemyFactory.CreateEnemyType1(),
+            enemyFactory.CreateEnemyType1(),
+            enemyFactory.CreateBoss(),
+        };
     }
 
     public void GameRunning()
     {
-        battle.RunBattle();
+        foreach (var enemyParty in enemyParties)
+        {
+            var battle = new Battle(heroes, enemyParty);
+            battle.RunBattle();
+
+            if (heroes.Characters.Count == 0)
+                break;
+        }
     }
 }

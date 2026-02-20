@@ -20,12 +20,13 @@ public class Battle
             {
                 foreach (Character character in party.Characters)
                 {
-                    Console.WriteLine();
                     Console.WriteLine($"{character.Name} is taking a turn...");
                     party.Player.ChooseAction(this, character).Run(this, character);
 
                     if (IsPartyEmpty)
                         break;
+
+                    Console.WriteLine();
                 }
                 if (IsPartyEmpty)
                     break;
@@ -35,10 +36,12 @@ public class Battle
         if (heroes.Characters.Count > 0)
         {
             Console.Clear();
+            ConsoleColor previousColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(
                 "You have defeated the Uncoded One's forces! You have won the battle!"
             );
+            Console.ForegroundColor = previousColor;
         }
         else
         {
