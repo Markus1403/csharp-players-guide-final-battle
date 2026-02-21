@@ -18,7 +18,7 @@ public class Game
         Console.WriteLine("2 - Computer vs. Computer");
         Console.WriteLine("3 - Human vs. Human");
         Console.Write("Select a Game Mode: ");
-        string choice = Console.ReadLine();
+        string choice = Console.ReadLine() ?? string.Empty;
 
         if (choice == "1")
         {
