@@ -5,14 +5,37 @@ public class Game
     private Party heroes;
     private List<Party> enemyParties;
 
-    private IPlayer friendlyPlayer = new ComputerPlayer();
-    private IPlayer enemyPlayer = new ComputerPlayer();
+    private IPlayer friendlyPlayer;
+    private IPlayer enemyPlayer;
 
     private EnemyFactory enemyFactory;
     private HeroFactory heroFactory;
 
     public Game()
     {
+        Console.WriteLine("Game Mode Selection:");
+        Console.WriteLine("1 - Human vs. Computer");
+        Console.WriteLine("2 - Computer vs. Computer");
+        Console.WriteLine("3 - Human vs. Human");
+        Console.Write("Select a Game Mode: ");
+        string choice = Console.ReadLine();
+
+        if (choice == "1")
+        {
+            friendlyPlayer = new HumanPlayer();
+            enemyPlayer = new ComputerPlayer();
+        }
+        else if (choice == "2")
+        {
+            friendlyPlayer = new ComputerPlayer();
+            enemyPlayer = new ComputerPlayer();
+        }
+        else
+        {
+            friendlyPlayer = new HumanPlayer();
+            enemyPlayer = new HumanPlayer();
+        }
+
         Console.Clear();
 
         heroFactory = new HeroFactory(friendlyPlayer);
