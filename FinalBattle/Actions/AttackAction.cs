@@ -13,7 +13,7 @@ public class AttackAction : IAction
         this.attack = attack;
     }
 
-    public void Run(Battle battle, Character character)
+    public bool Run(Battle battle, Character character)
     {
         Console.WriteLine($"{character.Name} used {attack.Name} on {target.Name}.");
 
@@ -29,5 +29,7 @@ public class AttackAction : IAction
             battle.GetPartyMember(target).Characters.Remove(target);
             Console.WriteLine($"{target.Name} was defeated!");
         }
+
+        return true;
     }
 }

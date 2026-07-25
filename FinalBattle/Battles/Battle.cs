@@ -2,8 +2,8 @@ namespace FinalBattle;
 
 public class Battle
 {
-    private Party heroes;
-    private Party monsters;
+    public Party heroes { get; }
+    public Party monsters { get; }
 
     public Battle(Party heroes, Party monsters)
     {
@@ -20,8 +20,15 @@ public class Battle
             {
                 foreach (Character character in party.Characters)
                 {
+                    Status.Render(this, character);
+
                     Console.WriteLine($"{character.Name} is taking a turn...");
-                    party.Player.ChooseAction(this, character).Run(this, character);
+                    bool turnTaken = false;
+
+                    while (!turnTaken && !IsPartyEmpty)
+                    {
+                        turnTaken = party.Player.ChooseAction(this, character).Run(this, character);
+                    }
 
                     if (IsPartyEmpty)
                         break;

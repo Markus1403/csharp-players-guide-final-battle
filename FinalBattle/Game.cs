@@ -1,5 +1,4 @@
 namespace FinalBattle;
-
 public class Game
 {
     private Party heroes;
@@ -42,13 +41,24 @@ public class Game
         enemyFactory = new EnemyFactory(enemyPlayer);
 
         heroes = heroFactory.CreateHeroParty();
+        heroes.Inventory.Add(new HealPotion());
+        heroes.Inventory.Add(new HealPotion());
+        heroes.Inventory.Add(new HealPotion());
 
         enemyParties = new List<Party>
         {
             enemyFactory.CreateEnemyType1(),
-            enemyFactory.CreateEnemyType1(),
+            enemyFactory.CreateEnemyType2(),
             enemyFactory.CreateBoss(),
         };
+
+        foreach (var enemy in enemyParties)
+        {
+            enemy.Inventory.Add(new HealPotion());
+        }
+
+
+
     }
 
     public void GameRunning()

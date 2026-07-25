@@ -21,8 +21,8 @@ The following challenges has been implemented:
 - [x] The Player Decides
 
 **Expansions**
-- [ ] The Game's Status
-- [ ] Items
+- [x] The Game's Status
+- [x] Items
 - [ ] Gear
 - [ ] Stolen Inventory
 - [ ] Vin Fletcher

@@ -2,5 +2,5 @@ namespace FinalBattle;
 
 public interface IAction
 {
-    void Run(Battle battle, Character character);
+    bool Run(Battle battle, Character character);
 }
